@@ -23,7 +23,7 @@ class PlantService {
     int? daysBetweenReminders,
     TimeOfDay? reminderTimeOfDay,
   }) {
-    PlantEntry plant = PlantEntry(
+    PlantEntry plant = PlantEntry.fullPlant(
       const Uuid(),
       created ?? DateTime.parse('2023-04-28 21:45:01'),
       name ?? 'Plant name',
@@ -31,7 +31,7 @@ class PlantService {
         reminderStartDate ?? DateTime.parse('2023-04-28 21:45:01'),
         lastReminder ?? DateTime.parse('2023-04-28 21:45:01'),
         daysBetweenReminders ?? 3,
-        reminderTimeOfDay ?? TimeOfDay(hour: 12, minute: 00),
+        reminderTimeOfDay ?? const TimeOfDay(hour: 12, minute: 00),
       ),
     );
 
