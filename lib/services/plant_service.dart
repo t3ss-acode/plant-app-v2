@@ -9,8 +9,9 @@ class PlantService {
     plants.add(_createDummyPlant(name: 'Plant 1'));
     plants.add(_createDummyPlant(name: 'Plant 2'));
     plants.add(_createDummyPlant(name: 'Plant 3'));
-    plants.add(_createDummyPlant(name: 'Plant 4'));
-    plants.add(_createDummyPlant(name: 'Plant 5'));
+    plants.add(_createDummyPlant(name: 'Plant 3'));
+    plants.add(_createDummyPlant(name: 'Plant 3'));
+    plants.add(_createDummyPlant(name: 'Plant 3'));
 
     return Future.value(plants);
   }
@@ -27,7 +28,7 @@ class PlantService {
       const Uuid(),
       created ?? DateTime.parse('2023-04-28 21:45:01'),
       name ?? 'Plant name',
-      ReminderTime(
+      ReminderTime.allFields(
         reminderStartDate ?? DateTime.parse('2023-04-28 21:45:01'),
         lastReminder ?? DateTime.parse('2023-04-28 21:45:01'),
         daysBetweenReminders ?? 3,

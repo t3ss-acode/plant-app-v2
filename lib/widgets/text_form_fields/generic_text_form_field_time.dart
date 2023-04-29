@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:water_plant/util/style_util.dart';
 
 class GenericTextFormFieldTime extends StatefulWidget {
   final String labelText;
+  final Function(TimeOfDay) onSaved;
 
   const GenericTextFormFieldTime({
     super.key,
     required this.labelText,
+    required this.onSaved,
   });
 
   @override
@@ -14,6 +17,11 @@ class GenericTextFormFieldTime extends StatefulWidget {
 }
 
 class _GenericTextFormFieldTimeState extends State<GenericTextFormFieldTime> {
+  static const border = UnderlineInputBorder(
+    borderSide: BorderSide(
+      color: StyleUtil.green100,
+    ),
+  );
   TextEditingController timeinput = TextEditingController();
 
   @override
@@ -30,6 +38,9 @@ class _GenericTextFormFieldTimeState extends State<GenericTextFormFieldTime> {
       ),
       decoration: InputDecoration(
         labelText: widget.labelText,
+        labelStyle: const TextStyle(color: StyleUtil.green100),
+        focusedBorder: border,
+        enabledBorder: border,
         errorStyle: const TextStyle(fontSize: 16),
       ),
       readOnly: true,
@@ -42,13 +53,25 @@ class _GenericTextFormFieldTimeState extends State<GenericTextFormFieldTime> {
         if (pickedTime != null) {
           DateTime now = DateTime.now();
           DateTime dateTime = DateTime(
-              now.year, now.month, now.day, pickedTime.hour, pickedTime.minute);
+            now.year,
+            now.month,
+            now.day,
+            pickedTime.hour,
+            pickedTime.minute,
+          );
 
           String formattedTime = DateFormat("HH:mm").format(dateTime);
 
           setState(() {
             timeinput.text = formattedTime;
           });
+        }
+      },
+      onSaved: (newValue) {
+        if (newValue != null) {
+          DateTime dateTime = DateFormat.Hm().parse(newValue);
+
+          widget.onSaved(TimeOfDay.fromDateTime(dateTime.toLocal()));
         }
       },
       // The validator receives the text that the user has entered.

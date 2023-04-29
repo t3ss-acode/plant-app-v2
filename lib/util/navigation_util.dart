@@ -8,4 +8,8 @@ class NavigationUtil {
       ),
     );
   }
+
+  static void popScreen(BuildContext context) {
+    Navigator.of(context).pop();
+  }
 }

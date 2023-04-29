@@ -17,7 +17,18 @@ class ScaffoldWithAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: TextStyle(
+            color: Colors.lightGreen[100],
+            fontSize: 20,
+            letterSpacing: 1.1,
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.lightGreen[100],
+        ),
+        backgroundColor: Colors.lightGreen[600],
       ),
       body: body,
       floatingActionButton: floatingActionButton,

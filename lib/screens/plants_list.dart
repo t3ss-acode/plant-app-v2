@@ -53,7 +53,7 @@ class _PlantsListScreen extends State<PlantsListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addPlant,
-        backgroundColor: StyleUtil.green100,
+        backgroundColor: Colors.lightGreen[600],
         child: const Icon(
           Icons.add_rounded,
           size: 40,

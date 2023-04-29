@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import 'package:water_plant/entities/plant_entry.dart';
 import 'package:water_plant/services/plant_service.dart';
 
@@ -43,10 +44,15 @@ class PlantProvider extends ChangeNotifier {
     return _plants;
   }
 
-  void addPlant(PlantEntry plant) {
+  Future<bool> addPlant(PlantEntry plant) async {
+    // TODO Use service
+    plant.id = const Uuid();
+    plant.created = DateTime.now();
     _plants.add(plant);
 
     notifyListeners();
+
+    return true;
   }
 
   // TODO Use plant.id instead?
