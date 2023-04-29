@@ -4,11 +4,13 @@ import 'package:water_plant/util/style_util.dart';
 class ScaffoldWithAppBar extends StatelessWidget {
   final String title;
   final Widget body;
+  final Widget? floatingActionButton;
 
   const ScaffoldWithAppBar({
     super.key,
     required this.title,
     required this.body,
+    this.floatingActionButton,
   });
 
   @override
@@ -18,6 +20,7 @@ class ScaffoldWithAppBar extends StatelessWidget {
         title: Text(title),
       ),
       body: body,
+      floatingActionButton: floatingActionButton,
       backgroundColor: StyleUtil.green10,
     );
   }

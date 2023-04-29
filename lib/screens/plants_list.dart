@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_plant/entities/plant_entry.dart';
 import 'package:water_plant/providers/plant_provider.dart';
+import 'package:water_plant/screens/add_plant.dart';
+import 'package:water_plant/util/navigation_util.dart';
+import 'package:water_plant/util/style_util.dart';
 import 'package:water_plant/widgets/generic_list/generic_list.dart';
 import 'package:water_plant/widgets/generic_list/generic_list_item.dart';
 import 'package:water_plant/widgets/scaffold_with_app_bar.dart';
@@ -48,6 +51,15 @@ class _PlantsListScreen extends State<PlantsListScreen> {
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addPlant,
+        backgroundColor: StyleUtil.green100,
+        child: const Icon(
+          Icons.add_rounded,
+          size: 40,
+          color: StyleUtil.green10,
+        ),
+      ),
     );
   }
 
@@ -56,6 +68,10 @@ class _PlantsListScreen extends State<PlantsListScreen> {
     listItems = plants.map((plant) => GenericListItem(plant.name)).toList();
 
     return listItems;
+  }
+
+  _addPlant() {
+    NavigationUtil.pushScreen(context, const AddPlantScreen());
   }
 }
 
