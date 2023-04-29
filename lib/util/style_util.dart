@@ -3,7 +3,8 @@ import 'dart:ui';
 class StyleUtil {
   static const Color green10 = Color.fromARGB(255, 246, 250, 237);
   static const Color green20 = Color.fromARGB(255, 236, 248, 226);
-  static const Color green30 = Color.fromARGB(255, 220, 240, 205);
+  static const Color green25 = Color.fromARGB(255, 232, 248, 220);
+  static const Color green30 = Color.fromARGB(255, 223, 243, 208);
   static const Color green40 = Color.fromARGB(255, 207, 234, 190);
   static const Color green60 = Color.fromARGB(255, 177, 221, 154);
   static const Color green80 = Color.fromARGB(255, 144, 207, 120);
