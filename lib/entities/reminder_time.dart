@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ReminderTime {
   late DateTime startDate; // TODO choose your own start date
-  late DateTime lastReminder;
+  DateTime? lastReminder;
   int daysBetweenReminders;
   TimeOfDay timeOfDay;
 
@@ -19,4 +19,22 @@ class ReminderTime {
     this.daysBetweenReminders,
     this.timeOfDay,
   );
+
+  DateTime getNextReminder() {
+    DateTime? countFrom = lastReminder;
+    countFrom ??= startDate;
+
+    DateTime nextReminderDay =
+        countFrom.add(Duration(days: daysBetweenReminders)).toLocal();
+
+    DateTime nextReminder = DateTime(
+      nextReminderDay.year,
+      nextReminderDay.month,
+      nextReminderDay.day,
+      timeOfDay.hour,
+      timeOfDay.minute,
+    );
+
+    return nextReminder;
+  }
 }

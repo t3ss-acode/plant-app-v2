@@ -3,8 +3,9 @@ import 'package:water_plant/util/style_util.dart';
 
 class GenericListItem {
   final String text;
+  final String? subtitle;
 
-  GenericListItem(this.text);
+  GenericListItem(this.text, {this.subtitle});
 
   Widget build() {
     return Row(
@@ -20,14 +21,29 @@ class GenericListItem {
               color: StyleUtil.green25,
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: Text(
-              text,
-              style: const TextStyle(
-                color: StyleUtil.green200,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 1.1,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  text,
+                  style: const TextStyle(
+                    color: StyleUtil.green200,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.1,
+                  ),
+                ),
+                if (subtitle != null)
+                  Text(
+                    subtitle!,
+                    style: const TextStyle(
+                      color: StyleUtil.green200,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.1,
+                    ),
+                  ),
+              ],
             ),
           ),
         ),
